@@ -1,0 +1,23 @@
+package Homework2;
+
+public class Demo {
+	public static void main(String[] args) {
+		Task task1 = new Task("Building a house", 10);
+		Task task2 = new Task("Swimming the ocean", 5);
+		
+		Employee pesho = new Employee("Pesho",8);
+		Employee gosho = new Employee("Gosho",8);
+		
+		pesho.currentTask = task2;
+		pesho.work();
+		pesho.showReport();
+		
+		pesho.currentTask = task1;
+		pesho.work();
+		pesho.showReport();
+		
+		gosho.currentTask = task1;
+		gosho.work();
+		gosho.showReport();
+	}
+}
