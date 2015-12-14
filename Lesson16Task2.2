@@ -1,0 +1,81 @@
+package Task2;
+
+public class StudentGroup {
+	String groupSubject;
+	Student[] students;
+	byte freePlaces;
+	final int NUM_OF_PLACES = 5;
+	
+	StudentGroup(){
+		this.students = new Student[NUM_OF_PLACES];
+		this.freePlaces = NUM_OF_PLACES;
+	}
+	
+	StudentGroup(String subject){
+		this();
+		this.groupSubject = subject;
+	}
+	
+	void addStudent(Student s) {
+		if (s.subject.equalsIgnoreCase(this.groupSubject)) {
+			if (this.freePlaces > 0) {
+				for (int i = 0; i < this.students.length; i++) {
+					if (this.students[i] == null) {
+						this.students[i] = s;
+						this.freePlaces--;
+						break;
+					}
+				}
+			}
+			else{
+				System.out.println("No free places in this group!");
+			}
+		}
+		else{
+			System.out.println("Wrong subject!");
+		}
+	}
+	
+	void emptyGroup(){
+		for(int i = 0; i<this.students.length; i++){
+			this.students[i] = null;
+		}
+		this.freePlaces = NUM_OF_PLACES;
+	}
+	
+	String theBestStudent() {
+		int bestStudentIndex = 0;
+		float maxGrade = (float) this.students[0].grade;
+		for(int i = 1; i<this.students.length; i++){
+			if(this.students[i].grade>=maxGrade){
+				maxGrade = (float) this.students[i].grade;
+				bestStudentIndex = i;
+		    }
+		}
+		return this.students[bestStudentIndex].name;
+	}
+	
+	void printStudentsInGroup() {
+		boolean isEmpty = true;
+		for (int i = 0; i < this.students.length; i++) {
+			if (this.students[i] != null) {
+				isEmpty = false;
+				break;
+			}
+		}
+		if (!isEmpty) {
+			for (int i = 0; i < this.students.length; i++) {
+				if (this.students[i] == null) {
+					continue;
+				} else {
+					System.out.println(
+							"Name: " + this.students[i].name + ", year in collage: " + this.students[i].yearInCollage
+									+ ", age: " + this.students[i].age + ", grade: " + this.students[i].grade);
+				}
+			}
+		} else {
+			System.out.println("This group is empty");
+		}
+	}
+	
+}
