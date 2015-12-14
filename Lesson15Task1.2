@@ -1,0 +1,31 @@
+package Task1;
+
+public class Demo {
+	public static void main(String[] args) {
+		Computer pc = new Computer();
+		Computer laptop = new Computer();
+		
+		pc.year = 2011;
+		pc.price = 390;
+		pc.isNotebook = false;
+		pc.hardDiskMemory = 512;
+		pc.freeMemory = 324;
+		pc.operationSystem = "Windows7";
+		
+		laptop.year = 2012;
+		laptop.price = 1200;
+		laptop.isNotebook = true;
+		laptop.hardDiskMemory = 1000;
+		laptop.freeMemory = 724;
+		laptop.operationSystem = "Windows10";
+		
+		pc.changeOperationSystem("Windows8");
+		laptop.useMemory((double) 100);
+		
+		System.out.println("PC's characteristics: ");
+		pc.printInfo();
+		System.out.println("Laptop's characteristics: ");
+		laptop.printInfo();
+		
+	}
+}
