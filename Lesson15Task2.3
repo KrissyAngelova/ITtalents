@@ -1,0 +1,21 @@
+package Task2;
+
+public class Demo {
+	public static void main(String[] args) {
+		GSM tel1 = new GSM();
+		GSM tel2 = new GSM();
+		
+		tel1.model = "Samsung Galaxy S4";
+		tel2.model = "Iphone 5";
+		
+		tel1.insertSimCard("0888089253");
+		tel2.insertSimCard("0883253713");
+		
+		tel1.call(tel2, 31);
+		tel1.printInfoForTheLastOutgoingCall();
+		tel2.printInfoForTheLastIncomingCall();
+		
+		System.out.println(tel1.getSumForCall()+" lv.");
+		System.out.println(tel2.getSumForCall()+" lv.");
+	}
+}
