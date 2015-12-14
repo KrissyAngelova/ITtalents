@@ -1,0 +1,30 @@
+package Task1;
+
+public class Computer {
+	int year;
+	double price;
+	boolean isNotebook;
+	double hardDiskMemory;
+	double freeMemory;
+	String operationSystem;
+	
+	void changeOperationSystem(String newOperationSystem){
+		this.operationSystem = newOperationSystem;
+	}
+	
+	void useMemory(double memory){
+		if(memory > this.freeMemory){
+			System.out.println("Not enough free memory!");
+		}
+		else{
+			this.freeMemory -= memory;
+		}
+	}
+	
+	void printInfo(){
+		System.out.println("Year: "+this.year+", price: "+this.price+", Harddisk memory: "
+	            +this.hardDiskMemory+", Free memory: "+this.freeMemory+
+	            ", has operating system: "+this.operationSystem);
+	}
+	
+}
