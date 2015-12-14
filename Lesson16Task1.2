@@ -1,0 +1,21 @@
+package Task1;
+
+public class Demo {
+	public static void main(String[] args) {
+		Computer c1 = new Computer();
+		Computer c2 = new Computer(2013, 750, 512, 356);
+		Computer c3 = new Computer(2014, 1300, true, 1000, 726, "Win8");
+		
+		int result = c2.comparePrice(c3);
+		
+		if(result==-1){
+			System.out.println("C3 is cheaper than C2");
+		}
+		else if(result==1){
+			System.out.println("C2 is cheaper than C3");
+		}
+		else{
+			System.out.println("Same price");
+		}
+	}
+}
