@@ -1,0 +1,103 @@
+package Task2;
+
+public class GSM {
+	String model;
+	boolean hasSimCard;
+	String simMobileNumber;
+	int outgoingCallsDuration;
+	Call lastIncomingCall;
+	Call lastOutgoingCall;
+	
+	void insertSimCard( String simMobileNumber){
+		boolean isNumber = false;
+		for(int i = 0; i<simMobileNumber.length(); i++){
+			if(simMobileNumber.charAt(i)>='0' && simMobileNumber.charAt(i)<='9'){
+				isNumber = true;
+			}
+			else{
+				isNumber = false;
+				break;
+			}
+		}
+		if(isNumber){
+			if(simMobileNumber.charAt(0)=='0' && simMobileNumber.charAt(1)=='8' && simMobileNumber.length() == 10){
+				this.simMobileNumber = simMobileNumber;
+				this.hasSimCard = true;
+			}
+			else{
+				this.hasSimCard = false;
+				System.out.println("Invalid Number");
+			}
+		}
+		else{
+			this.hasSimCard = false;
+			System.out.println("Invalid Number");
+		}
+	}
+	
+	void removeSimCard(){
+		this.hasSimCard = false;
+	}
+	
+	void call( GSM receiver, float duration){
+		boolean isRightDuration = false;
+		boolean isSamePhones = true;
+		boolean bothHasSimCard = false;
+		if(duration>0 && duration<=60){
+			isRightDuration= true;
+		}
+		else{
+			System.out.println("Invalid duration");
+		}
+		
+		for(int i = 0; i<this.simMobileNumber.length(); i++){
+			if(this.simMobileNumber.charAt(i)!=receiver.simMobileNumber.charAt(i)){
+				isSamePhones = false;
+				break;
+			}
+			
+		}
+		
+		if(this.hasSimCard==true && receiver.hasSimCard == true){
+			bothHasSimCard = true;
+		}
+		else{
+			System.out.println("The caller or the receiver has same numbers");
+		}
+		
+		if(isRightDuration == true && isSamePhones == false && bothHasSimCard == true){
+			Call call = new Call();
+			call.caller = this.simMobileNumber;
+			call.receiver = receiver.simMobileNumber;
+			call.duration = duration;
+			this.lastOutgoingCall= call;
+			receiver.lastIncomingCall = call;
+			this.outgoingCallsDuration+=duration;
+			
+		}
+	}
+	
+	float getSumForCall(){
+		float result = (float)this.outgoingCallsDuration * (float)Call.priceForAMinute;
+		return result;
+	}
+	
+	void printInfoForTheLastIncomingCall(){
+		if(this.lastIncomingCall != null){
+			System.out.println("From: "+lastIncomingCall.caller+", Duration: "+lastIncomingCall.duration+" minutes");
+		}
+		else{
+			System.out.println("No incomming calls");
+		}
+	}
+	
+	void printInfoForTheLastOutgoingCall(){
+		if(this.lastOutgoingCall!= null){
+			System.out.println("To: "+lastOutgoingCall.receiver+", Duration: "+lastOutgoingCall.duration+" minutes");
+		}
+		else{
+			System.out.println("No outgoing calls");
+		}
+	}
+		
+}
