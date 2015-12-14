@@ -1,0 +1,55 @@
+package Task2;
+
+public class Student {
+	String name;
+	String subject;
+	double grade;
+	byte yearInCollage;
+	byte age;
+	boolean isDegree;
+	double money;
+	
+	Student(){
+		this.grade = (float) 4.0;
+		this.yearInCollage = 1;
+		this.isDegree = false;
+		this.money = 0;
+	}
+	
+	Student(String name, String subject, byte age){
+		this();
+		this.name = name;
+		this.subject = subject;
+		this.age = age;
+	}
+	
+	void upYear(){
+		if(this.yearInCollage<4){
+			this.yearInCollage++;
+		}
+		else{
+			this.isDegree = true;
+		}
+	}
+	
+	double receiveScolarship(double min, double amount){
+		if(this.grade>=min && this.age<30){
+			this.money+=amount;
+		}
+		return money;
+	}
+	
+	//добавям методите upGrade и downGrade, защото по подразбиране всички студенти са с оценка 4
+	// и методът за намиране на bestStudent в класа StudentGroup става безсмислен.
+	void upGrade(float amount){
+		if(this.grade+amount<=6){
+			this.grade+=amount;
+		}
+	}
+	
+	void downGrade(float amount){
+		if(this.grade-amount>=2){
+			this.grade-=amount;
+		}
+	}
+}
