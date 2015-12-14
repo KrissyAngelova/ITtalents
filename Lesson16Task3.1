@@ -1,0 +1,37 @@
+package Homework2;
+
+public class Task {
+
+	private String name;
+	private int workingHours;
+
+	Task(String name, int workingHours) {
+		setTaskName(name);
+		setWorkingHours(workingHours);
+	}
+
+	void setTaskName(String name) {
+		if (name != null) {
+			this.name = name;
+		} else {
+			System.out.println("You must enter a name of the task");
+		}
+	}
+
+	String getTaskName() {
+		return this.name;
+	}
+
+	void setWorkingHours(int hours) {
+		if (hours >= 0) {
+			this.workingHours = hours;
+		} else {
+			System.out.println("Invalid value for working hours");
+		}
+	}
+
+	int getWorkingHours() {
+		return this.workingHours;
+	}
+
+}
