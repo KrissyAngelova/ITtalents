@@ -1,0 +1,69 @@
+package Task2;
+
+public class College {
+	public static void main(String[] args) {
+		Student ivan = new Student("Ivan", "SP", (byte)25);
+		Student pesho = new Student("Pesho", "IT", (byte)20);
+		Student maria = new Student("Maria", "IT", (byte)20);
+		Student eli = new Student("Eli", "SP", (byte)21);
+		Student magi = new Student("Magi", "IT", (byte)20);
+		Student paco = new Student("Paco", "SP", (byte)21);
+		Student joro = new Student("Joro", "SP", (byte)23);
+		Student krisi = new Student("Krisi", "SP", (byte)21);
+		Student petq = new Student("Petq", "TTE", (byte)22);
+		Student vasko = new Student("Vasko", "IT", (byte)18);
+		Student ico = new Student("Ico", "SP", (byte)20);
+		Student kate = new Student("Kate", "IT", (byte)23);
+		
+		StudentGroup group1 = new StudentGroup("SP");
+		StudentGroup group2 = new StudentGroup("IT");
+		
+		ivan.upGrade((float)1.0);
+		maria.downGrade((float)0.25);
+		paco.upGrade((float)0.75);
+		ico.upGrade((float)1.25);
+		eli.downGrade((float)0.75);
+		krisi.upGrade((float)1.5);
+		kate.upGrade((float)1.75);
+		vasko.downGrade((float)0.5);
+		eli.upGrade((float)2.75);
+		
+		maria.receiveScolarship(4.0, 80);
+		ivan.receiveScolarship(4.5, 90);
+		ico.receiveScolarship(5, 100);
+		kate.receiveScolarship(5.5, 110);
+		
+		krisi.upYear();
+		eli.upYear();
+		paco.upYear();
+		joro.upYear();
+		ivan.upYear();
+		ivan.upYear();
+		
+		group1.addStudent(ivan);
+		group1.addStudent(eli);
+		group1.addStudent(paco);
+		group1.addStudent(krisi);
+		group1.addStudent(joro);
+	    group1.addStudent(ico);//Opitvame da vkarame student, kogato grupata e pulna
+		
+		group2.addStudent(pesho);
+		group2.addStudent(maria);
+		group2.addStudent(magi);
+		group2.addStudent(kate);
+		group2.addStudent(vasko);
+		group2.addStudent(petq);// Opitvame da vkarame student s razlichen subject
+		
+		System.out.println("Group 1: ");
+		group1.printStudentsInGroup();
+		System.out.println("The best student in group is "+group1.theBestStudent());
+		
+		System.out.println("Group 2: ");
+		group2.printStudentsInGroup();
+		System.out.println("The best student in group is "+group2.theBestStudent());
+		
+		group2.emptyGroup();
+		group2.printStudentsInGroup();
+		
+	}
+}
